@@ -46,7 +46,7 @@ Available replacements:
 
 | replacement |       output       | description |
 | :---------: | :----------------: | :---------: |
-|   `:use:`   |      `use ;`       |             |
-| `:showdb:`  |      `show ;`      |             |
-| `:showtb:`  |      `show ;`      |             |
+|   `:use:`   |  `use database;`   |             |
+| `:showdb:`  | `show databases;`  |             |
+| `:showtb:`  |   `show tables;`   |             |
 |  `:desc:`   | `desc table_name;` |             |
