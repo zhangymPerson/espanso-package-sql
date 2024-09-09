@@ -30,18 +30,18 @@ matches:
     replace: "delete from $|$ where condition;"
 
   - trigger: ":create:"
-    replace: |
-      create table if not exists $|$ (
-        id int auto_increment primary key,
-        create_time datetime not null default current_timestamp,
-        create_by varchar(255) not null,
-        update_time datetime default null on update current_timestamp,
-        update_by varchar(255) default null,
-        remark text
-      ) engine=innodb default charset=utf8mb4;
+    replace: >-
+      create table if not exists table_name (
+          id int auto_increment primary key,
+          create_time datetime not null default current_timestamp comment '创建时间',
+          create_by varchar(255) not null comment '创建人',
+          update_time datetime default null on update current_timestamp comment '更新时间',
+          update_by varchar(255) default null comment '更新人',
+          remark text
+      ) engine=innodb default charset=utf8mb4 comment='$|$';
 
   - trigger: ":alter:"
-    replace: |
+    replace: >-
       alter table $|$ add column column_name data_type;
 
   - trigger: ":drop:"
@@ -61,3 +61,6 @@ matches:
 
   - trigger: ":desc:"
     replace: "desc $|$;"
+
+  - trigger: ":showcreate:"
+    replace: "show create table $|$;"
